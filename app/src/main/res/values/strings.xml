@@ -10,4 +10,5 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="list_repo">Lista Repositórios</string>
+    <string name="not_found_repository">Nenhum repositório encontrado!</string>
 </resources>
