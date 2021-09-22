@@ -1,0 +1,19 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="height_size_card_view">90dp</dimen>
+    <dimen name="margin_top_4_dp">4dp</dimen>
+    <dimen name="margin_end_4_dp">4dp</dimen>
+    <dimen name="margin_start_4_dp">4dp</dimen>
+    <dimen name="margin_4_dp">4dp</dimen>
+    <dimen name="margin_6_dp">6dp</dimen>
+    <dimen name="card_view_elevation">6dp</dimen>
+    <dimen name="margin_top_text_repo">12dp</dimen>
+    <dimen name="margin_start_item_repo">18dp</dimen>
+    <dimen name="text_size_name_repo">14sp</dimen>
+    <dimen name="margin_start_icon">24dp</dimen>
+    <dimen name="size_icon_repo">14dp</dimen>
+    <dimen name="text_size_description_icon">11sp</dimen>
+    <dimen name="icon_avatar_size">40dp</dimen>
+    <dimen name="corner_radius_card_view">4dp</dimen>
+    <dimen name="inner_radius_card_view">2dp</dimen>
+</resources>

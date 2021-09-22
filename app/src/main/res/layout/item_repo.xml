@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="@color/background_item_repo"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:id="@+id/card_view"
+    android:innerRadius="@dimen/inner_radius_card_view"
+    android:layout_height="@dimen/height_size_card_view"
+    android:layout_marginBottom="@dimen/margin_4_dp"
+    android:layout_marginEnd="@dimen/margin_4_dp"
+    android:layout_marginStart="@dimen/margin_4_dp"
+    android:layout_marginTop="@dimen/margin_4_dp"
+    android:layout_width="match_parent"
+    card_view:cardCornerRadius="@dimen/corner_radius_card_view"
+    card_view:cardElevation="@dimen/card_view_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parentWinner"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_6_dp"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_percent_65_land"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_percent_75"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_top_text_repo"
+            android:layout_marginStart="@dimen/margin_start_item_repo"
+            android:id="@+id/textview_name_repo"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintEnd_toEndOf="@id/guideline_percent_75"
+            tools:text="Kotlin"
+            android:textSize="@dimen/text_size_name_repo"
+            android:gravity="center|start"
+            android:textColor="@android:color/holo_blue_dark"
+            />
+
+        <ImageButton
+            android:layout_marginStart="@dimen/margin_start_icon"
+            android:id="@+id/img_fork"
+            android:layout_width="@dimen/size_icon_repo"
+            android:layout_height="@dimen/size_icon_repo"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_baseline_call_split_24"
+            card_view:layout_constraintStart_toStartOf="@id/textview_name_repo"
+            card_view:layout_constraintBottom_toTopOf="@id/guideline_percent_65_land" />
+
+        <ImageButton
+            android:layout_marginStart="@dimen/margin_start_icon"
+            android:id="@+id/img_star"
+            android:layout_width="@dimen/size_icon_repo"
+            android:layout_height="@dimen/size_icon_repo"
+            android:src="@drawable/ic_baseline_star_16"
+            card_view:layout_constraintStart_toEndOf="@id/img_fork"
+            card_view:layout_constraintBottom_toTopOf="@id/guideline_percent_65_land"
+            android:importantForAccessibility="no"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_4_dp"
+            android:id="@+id/textview_numbers_forks"
+            card_view:layout_constraintTop_toBottomOf="@id/img_fork"
+            card_view:layout_constraintStart_toStartOf="@id/img_fork"
+            card_view:layout_constraintEnd_toEndOf="@id/img_fork"
+            tools:text="382"
+            style="@style/IconTheme"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_4_dp"
+            android:id="@+id/textview_numbers_stars"
+            card_view:layout_constraintTop_toBottomOf="@id/img_star"
+            card_view:layout_constraintStart_toStartOf="@id/img_star"
+            card_view:layout_constraintEnd_toEndOf="@id/img_star"
+            tools:text="381"
+            style="@style/IconTheme"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageButton
+            card_view:layout_constraintStart_toEndOf="@id/guideline_percent_75"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="@id/guideline_percent_65_land"
+            android:id="@+id/image_avatar"
+            android:layout_width="@dimen/icon_avatar_size"
+            android:layout_height="@dimen/icon_avatar_size"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:importantForAccessibility="no"
+            android:background="@drawable/round_button"
+            android:src="@drawable/ic_baseline_person_24" />
+
+        <TextView
+            android:id="@+id/textview_name_user"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/text_size_description_icon"
+            card_view:layout_constraintTop_toTopOf="@id/textview_numbers_stars"
+            card_view:layout_constraintStart_toStartOf="@id/image_avatar"
+            card_view:layout_constraintEnd_toEndOf="@id/image_avatar"
+            tools:text="Kotlin"
+            android:gravity="center|start"
+            android:textColor="@android:color/holo_blue_light"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
