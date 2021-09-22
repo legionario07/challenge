@@ -13,6 +13,7 @@
     android:layout_marginEnd="@dimen/margin_4_dp"
     android:layout_marginStart="@dimen/margin_4_dp"
     android:layout_marginTop="@dimen/margin_4_dp"
+    android:layout_margin="@dimen/margin_card_view"
     android:layout_width="match_parent"
     card_view:cardCornerRadius="@dimen/corner_radius_card_view"
     card_view:cardElevation="@dimen/card_view_elevation">
@@ -55,7 +56,6 @@
             />
 
         <ImageButton
-            android:layout_marginStart="@dimen/margin_start_icon"
             android:id="@+id/img_fork"
             android:layout_width="@dimen/size_icon_repo"
             android:layout_height="@dimen/size_icon_repo"
