@@ -4,13 +4,16 @@ import br.com.challenge.data.entity.LanguageType
 import br.com.challenge.data.entity.SortType
 import br.com.challenge.domain.usecases.ListRepoUseCase
 import br.com.challenge.presentation.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ListRepoViewModel(private val listRepoUseCase: ListRepoUseCase) : BaseViewModel() {
+@HiltViewModel
+class ListRepoViewModel @Inject constructor(private val listRepoUseCase: ListRepoUseCase) : BaseViewModel() {
 
     private val _listRepoMutable: MutableStateFlow<ListRepoState> =
         MutableStateFlow(ListRepoState.Empty)

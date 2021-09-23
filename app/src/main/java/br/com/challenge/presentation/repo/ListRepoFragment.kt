@@ -5,23 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.challenge.databinding.FragmentListRepoBinding
-import br.com.challenge.domain.repository.api.ApiManager
-import br.com.challenge.domain.repository.remote.ListRepoRepositoryImpl
-import br.com.challenge.domain.usecases.ListRepoUseCase
 import br.com.challenge.presentation.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
-class ListRepoFragment : BaseFragment() {
+@AndroidEntryPoint
+class ListRepoFragment @Inject constructor() : BaseFragment() {
 
     private var _binding: FragmentListRepoBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel =
-        ListRepoViewModel(ListRepoUseCase(ListRepoRepositoryImpl(ApiManager.repositoryApi)))
+    private val viewModel: ListRepoViewModel by viewModels()
     private lateinit var listRepoAdapter: ListRepoAdapter
 
     private var isLoading = false
