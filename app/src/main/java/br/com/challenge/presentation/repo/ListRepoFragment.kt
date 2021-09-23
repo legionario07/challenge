@@ -75,7 +75,7 @@ class ListRepoFragment @Inject constructor() : BaseFragment() {
     }
 
     private fun configObservers() {
-        lifecycleScope.launchWhenStarted {
+        lifecycleScope.launchWhenCreated {
             viewModel.listRepoMutable.collect {
                 when (it) {
                     is ListRepoState.ItemsRepositories -> {
