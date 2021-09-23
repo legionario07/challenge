@@ -8,11 +8,13 @@ class ListRepoUseCase(private val repository: IListRepoRepository) {
 
     suspend fun getRepositories(
         language: String,
-        sort: String
+        sort: String,
+        page: Int
     ): Flow<List<RepositoryEntity>> {
         return repository.getRepositories(
             language,
-            sort
+            sort,
+            page
         )
     }
 }

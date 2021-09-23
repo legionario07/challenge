@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.challenge.databinding.FragmentListRepoBinding
 import br.com.challenge.domain.repository.api.ApiManager
 import br.com.challenge.domain.repository.remote.ListRepoRepositoryImpl
@@ -20,8 +20,12 @@ class ListRepoFragment : BaseFragment() {
     private var _binding: FragmentListRepoBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel = ListRepoViewModel(ListRepoUseCase(ListRepoRepositoryImpl(ApiManager.repositoryApi)))
+    private val viewModel =
+        ListRepoViewModel(ListRepoUseCase(ListRepoRepositoryImpl(ApiManager.repositoryApi)))
     private lateinit var listRepoAdapter: ListRepoAdapter
+
+    private var isLoading = false
+    private var page = 1;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +48,29 @@ class ListRepoFragment : BaseFragment() {
         with(binding) {
             recyclerListRepo.layoutManager = LinearLayoutManager(context)
             recyclerListRepo.setHasFixedSize(true)
-            listRepoAdapter = ListRepoAdapter(listOf())
+            listRepoAdapter = ListRepoAdapter(mutableListOf())
             recyclerListRepo.adapter = listRepoAdapter
+
+            recyclerListRepo.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+
+                    if (dy > 0) {
+                        val visibleItemCount = layoutManager.childCount
+                        val totalItemCount = layoutManager.itemCount
+                        val pastVisiblesItems = layoutManager.findFirstVisibleItemPosition()
+                        if (!isLoading) {
+                            if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
+                                isLoading = true
+                                viewModel.getRepositories(page = ++page)
+                                isLoading = false
+                            }
+                        }
+                    }
+                }
+            })
         }
     }
 
@@ -55,7 +80,7 @@ class ListRepoFragment : BaseFragment() {
                 when (it) {
                     is ListRepoState.ItemsRepositories -> {
                         listRepoAdapter.updateList(it.repositories)
-                        binding.recyclerListRepo.adapter?.notifyDataSetChanged()
+                        listRepoAdapter.notifyDataSetChanged()
 
                         hideLoading(binding.progress)
                     }

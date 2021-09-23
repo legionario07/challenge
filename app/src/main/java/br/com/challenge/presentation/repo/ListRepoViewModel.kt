@@ -18,7 +18,8 @@ class ListRepoViewModel(private val listRepoUseCase: ListRepoUseCase) : BaseView
 
     fun getRepositories(
         language: String = LanguageType.KOTLIN.value,
-        sort: String = SortType.STARS.value
+        sort: String = SortType.STARS.value,
+        page: Int = 1
     ) {
 
         _listRepoMutable.value = ListRepoState.Loading(true)
@@ -26,7 +27,8 @@ class ListRepoViewModel(private val listRepoUseCase: ListRepoUseCase) : BaseView
         scopeJob.launch {
             listRepoUseCase.getRepositories(
                 language,
-                sort
+                sort,
+                page
             )
                 .catch { e ->
                     handlerError(e as Exception)

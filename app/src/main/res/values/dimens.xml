@@ -16,7 +16,7 @@
     <dimen name="icon_avatar_size">40dp</dimen>
     <dimen name="corner_radius_card_view">4dp</dimen>
     <dimen name="inner_radius_card_view">2dp</dimen>
-    <dimen name="margin_top_recycler_view">15dp</dimen>
+    <dimen name="margin_top_recycler_view">8dp</dimen>
     <dimen name="margin_10_dp">10dp</dimen>
     <dimen name="text_size_16sp">16sp</dimen>
     <dimen name="margin_card_view">4dp</dimen>

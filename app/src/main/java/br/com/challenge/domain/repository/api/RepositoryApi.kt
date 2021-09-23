@@ -9,6 +9,7 @@ interface RepositoryApi : Api {
     @GET("search/repositories?q=language:kotlin&sort=stars")
     override suspend fun getRepositories(
         @Query("q") language: String,
-        @Query("sort") sort: String
+        @Query("sort") sort: String,
+        @Query("page") page: Int
     ): RepositoryDTO
 }

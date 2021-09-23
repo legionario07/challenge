@@ -10,22 +10,18 @@ import br.com.challenge.R
 import br.com.challenge.data.entity.RepositoryEntity
 import com.bumptech.glide.Glide
 
-class ListRepoAdapter(private var listRepo: List<RepositoryEntity>) :
+class ListRepoAdapter(private var listRepo: MutableList<RepositoryEntity>) :
     RecyclerView.Adapter<ListRepoAdapter.ListRepoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListRepoHolder =
-        ListRepoHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_repo, parent, false
-            )
-        )
+        ListRepoHolder.create(parent)
 
     override fun onBindViewHolder(holder: ListRepoHolder, position: Int) {
         holder.bind(listRepo)
     }
 
     fun updateList(listRepo: List<RepositoryEntity>) {
-        this.listRepo = listRepo
+        this.listRepo.addAll(listRepo)
     }
 
     override fun getItemCount(): Int = listRepo.size
@@ -51,6 +47,13 @@ class ListRepoAdapter(private var listRepo: List<RepositoryEntity>) :
                 Glide.with(context)
                     .load(repositoryEntity.photoUser)
                     .into(imgAvatar);
+            }
+        }
+
+        companion object {
+            fun create(parent: ViewGroup): ListRepoHolder {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_repo, parent, false)
+                return ListRepoHolder(view)
             }
         }
     }

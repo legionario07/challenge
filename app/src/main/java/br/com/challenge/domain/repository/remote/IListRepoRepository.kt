@@ -5,5 +5,5 @@ import br.com.challenge.data.entity.RepositoryEntity
 import kotlinx.coroutines.flow.Flow
 
 interface IListRepoRepository {
-    suspend fun getRepositories(language: String, sort: String): Flow<List<RepositoryEntity>>
+    suspend fun getRepositories(language: String, sort: String, page: Int): Flow<List<RepositoryEntity>>
 }

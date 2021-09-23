@@ -12,11 +12,12 @@ class ListRepoRepositoryImpl(private val apiDataSource: Api) : IListRepoReposito
 
     override suspend fun getRepositories(
         language: String,
-        sort: String
+        sort: String,
+        page: Int
     ): Flow<List<RepositoryEntity>> {
         return flow {
             val responseData =
-                apiDataSource.getRepositories(language, sort)
+                apiDataSource.getRepositories(language, sort, page)
 
             val repositoriesEntity = RepositoryMapper.transformerRepository(responseData)
 
