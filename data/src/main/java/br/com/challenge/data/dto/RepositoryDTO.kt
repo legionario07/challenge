@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "repositories")
 @Parcelize
 data class RepositoryDTO(
-    @PrimaryKey(autoGenerate = true) var id: Int = 0,
+    @PrimaryKey(autoGenerate = false) var id: Int = 0,
     var items: List<ItemDTO> = listOf()
 ) : Parcelable
 

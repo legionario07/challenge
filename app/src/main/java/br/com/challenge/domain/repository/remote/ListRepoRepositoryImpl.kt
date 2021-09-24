@@ -1,7 +1,6 @@
 package br.com.challenge.domain.repository.remote
 
-import br.com.challenge.data.entity.RepositoryEntity
-import br.com.challenge.domain.mapper.RepositoryMapper
+import br.com.challenge.data.dto.RepositoryDTO
 import br.com.challenge.domain.repository.api.Api
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -15,14 +14,16 @@ class ListRepoRepositoryImpl @Inject constructor(private val apiDataSource: Api)
         language: String,
         sort: String,
         page: Int
-    ): Flow<List<RepositoryEntity>> {
+    ): Flow<RepositoryDTO?> {
         return flow {
             val responseData =
                 apiDataSource.getRepositories(language, sort, page)
 
-            val repositoriesEntity = RepositoryMapper.transformerRepository(responseData)
-
-            emit(repositoriesEntity)
+            emit(responseData)
         }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun saveRepository(repositoryDTO: RepositoryDTO) {
+        //Do Nothing
     }
 }

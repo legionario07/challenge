@@ -6,5 +6,5 @@ interface IDao {
 
     fun insert(repositoryDTO: RepositoryDTO)
 
-    fun getRepository(): RepositoryDTO
+    fun getRepository(id: Int): RepositoryDTO
 }

@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import br.com.challenge.data.dto.RepositoryDTO
 
-@Database(entities = [RepositoryDTO::class], version = 1)
+@Database(entities = [RepositoryDTO::class], version = 2)
 @TypeConverters(ListRepoConverter::class)
 abstract class RoomAppDB : RoomDatabase() {
 

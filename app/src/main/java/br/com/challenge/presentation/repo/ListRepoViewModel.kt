@@ -36,7 +36,7 @@ class ListRepoViewModel @Inject constructor(private val listRepoUseCase: ListRep
                 .catch { e ->
                     handlerError(e as Exception)
                 }.collect {
-                    _listRepoMutable.value = ListRepoState.ItemsRepositories(it)
+                    _listRepoMutable.value = ListRepoState.ItemsRepositories(it!!)
                 }
         }
     }

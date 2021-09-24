@@ -51,6 +51,7 @@ class ListRepoFragment @Inject constructor() : BaseFragment() {
             listRepoAdapter = ListRepoAdapter(mutableListOf())
             recyclerListRepo.adapter = listRepoAdapter
 
+            //Poderia ser usado a Biblioteca do Google Paging pra essa Função
             recyclerListRepo.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -60,9 +61,9 @@ class ListRepoFragment @Inject constructor() : BaseFragment() {
                     if (dy > 0) {
                         val visibleItemCount = layoutManager.childCount
                         val totalItemCount = layoutManager.itemCount
-                        val pastVisiblesItems = layoutManager.findFirstVisibleItemPosition()
+                        val pastVisibleItems = layoutManager.findFirstVisibleItemPosition()
                         if (!isLoading) {
-                            if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
+                            if (visibleItemCount + pastVisibleItems >= totalItemCount) {
                                 isLoading = true
                                 viewModel.getRepositories(page = ++page)
                                 isLoading = false

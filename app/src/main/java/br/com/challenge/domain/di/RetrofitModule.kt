@@ -29,6 +29,7 @@ object RetrofitModule {
         context.applicationContext, RoomAppDB::class.java, "AppDBB"
     )
         .allowMainThreadQueries()
+        .fallbackToDestructiveMigration()
         .build()
 
     @Singleton
