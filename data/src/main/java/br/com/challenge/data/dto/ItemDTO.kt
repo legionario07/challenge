@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ItemDTO(
 
+    @SerializedName("id") var id: Int = 0,
     @SerializedName("stargazers_count") var countStars: Int = 0,
     @SerializedName("forks_count") var countForks: Int = 0,
     @SerializedName("name") var nameRepository: String = "",

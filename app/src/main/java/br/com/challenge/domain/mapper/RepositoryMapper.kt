@@ -12,6 +12,7 @@ object RepositoryMapper {
             val repositoryEntity = item.ownerDTO?.avatarUrl?.let { avatarUrl ->
                 item.ownerDTO?.login?.let { nameAuthor ->
                     RepositoryEntity(
+                        item.id,
                         item.nameRepository,
                         item.countStars,
                         item.countForks,
