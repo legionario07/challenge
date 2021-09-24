@@ -6,8 +6,15 @@ import br.com.challenge.domain.utils.ConstantsUtil
 import br.com.challenge.domain.utils.FileUtil
 
 class FakeRepoApi : Api {
+
+    var mapDataSource = HashMap<Int, RepositoryDTO>()
+
     override suspend fun getRepositories(language: String, sort: String, page: Int): RepositoryDTO {
         val file = FileUtil.readFile(ConstantsUtil.JSON_REPOSITORY_DTO)
         return FileUtil.getFromReader(file, ConstantsUtil.REPOSITORY_DTO_TYPE) as RepositoryDTO
+    }
+
+    override suspend fun saveRepository(repositoryDTO: RepositoryDTO) {
+       mapDataSource[repositoryDTO.id] = repositoryDTO
     }
 }

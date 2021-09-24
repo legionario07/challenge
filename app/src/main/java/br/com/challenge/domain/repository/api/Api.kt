@@ -8,4 +8,6 @@ interface Api {
         sort: String,
         page: Int
     ): RepositoryDTO
+
+    suspend fun saveRepository(repositoryDTO: RepositoryDTO)
 }

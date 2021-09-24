@@ -24,6 +24,6 @@ class ListRepoRepositoryImpl @Inject constructor(private val apiDataSource: Api)
     }
 
     override suspend fun saveRepository(repositoryDTO: RepositoryDTO) {
-        //Do Nothing
+        apiDataSource.saveRepository(repositoryDTO)
     }
 }

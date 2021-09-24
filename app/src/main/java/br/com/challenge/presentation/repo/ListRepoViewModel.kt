@@ -3,6 +3,7 @@ package br.com.challenge.presentation.repo
 import br.com.challenge.data.entity.LanguageType
 import br.com.challenge.data.entity.SortType
 import br.com.challenge.domain.usecases.ListRepoUseCase
+import br.com.challenge.domain.utils.LoggerUtil
 import br.com.challenge.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ListRepoViewModel @Inject constructor(private val listRepoUseCase: ListRepoUseCase) : BaseViewModel() {
+class ListRepoViewModel @Inject constructor(private val listRepoUseCase: ListRepoUseCase) :
+    BaseViewModel() {
 
     private val _listRepoMutable: MutableStateFlow<ListRepoState> =
         MutableStateFlow(ListRepoState.Empty)
@@ -42,6 +44,9 @@ class ListRepoViewModel @Inject constructor(private val listRepoUseCase: ListRep
     }
 
     private fun handlerError(exception: Exception) {
-        _listRepoMutable.value = exception.message?.let { ListRepoState.Failure(it) }!!
+        exception.message?.let {
+            LoggerUtil.logError(LoggerUtil.DEFAULT_LOG_TAG, it)
+            _listRepoMutable.value = ListRepoState.Failure(it)
+        }
     }
 }

@@ -1,9 +1,11 @@
 package br.com.challenge
 
+import br.com.challenge.data.dto.RepositoryDTO
+import br.com.challenge.data.entity.RepositoryEntity
 import br.com.challenge.domain.local.FakeRepoDao
 import br.com.challenge.domain.remote.FakeRepoApi
-import br.com.challenge.domain.repository.local.ListRepoRepositoryLocalImpl
-import br.com.challenge.domain.repository.remote.ListRepoRepositoryImpl
+import br.com.challenge.domain.utils.ConstantsUtil
+import br.com.challenge.domain.utils.FileUtil
 import br.com.challenge.domain.utils.LoggerUtil
 import io.mockk.MockKAnnotations
 import io.mockk.clearAllMocks
@@ -23,11 +25,25 @@ open class BaseTest {
         //objects
         var apiFake = spyk(FakeRepoApi())
         var apiDaoFake = spyk(FakeRepoDao())
-        var remoteRepositoryImpl = spyk(ListRepoRepositoryImpl(apiFake))
-        var localRepositoryImpl = spyk(ListRepoRepositoryLocalImpl(apiDaoFake))
+
+        const val language = "language:kotlin"
+        const val sort = "stars"
+        const val page = 1
+
+        const val SIZE_LIST_REPOSITORY_DTO_RESPONSE = 30
     }
 
     private val testDispatcher = TestCoroutineDispatcher()
+
+    fun getRepositoryDTOFake(): RepositoryDTO {
+        val file = FileUtil.readFile(ConstantsUtil.JSON_REPOSITORY_DTO)
+        return FileUtil.getFromReader(file, ConstantsUtil.REPOSITORY_DTO_TYPE) as RepositoryDTO
+    }
+
+    fun getRepositoriesEntitiesDTOFake(): List<RepositoryEntity> {
+        val file = FileUtil.readFile(ConstantsUtil.JSON_REPOSITORY_ENTITIES)
+        return FileUtil.getFromReader(file, ConstantsUtil.REPOSITORY_ENTITIES_TYPE) as List<RepositoryEntity>
+    }
 
     @Before
     fun setUp() {

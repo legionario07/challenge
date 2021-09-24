@@ -7,8 +7,8 @@ class FakeRepoDao: IDao {
 
     var mapDataSource = HashMap<Int, RepositoryDTO>()
 
-    override fun getRepository(id: Int): RepositoryDTO {
-        return mapDataSource.get(id)!!
+    override fun getRepository(id: Int): RepositoryDTO? {
+        return mapDataSource[id]
     }
 
     override fun insert(repositoryDTO: RepositoryDTO) {

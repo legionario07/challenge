@@ -1,7 +1,7 @@
 [
   {
     "countForks": 8629,
-    "countStars": 40839,
+    "countStars": 40840,
     "id": 5152285,
     "nameAuthor": "square",
     "nameRepository": "okhttp",
@@ -9,7 +9,7 @@
   },
   {
     "countForks": 10827,
-    "countStars": 39490,
+    "countStars": 39491,
     "id": 51148780,
     "nameAuthor": "android",
     "nameRepository": "architecture-samples",
@@ -17,7 +17,7 @@
   },
   {
     "countForks": 4719,
-    "countStars": 38781,
+    "countStars": 38782,
     "id": 3432266,
     "nameAuthor": "JetBrains",
     "nameRepository": "kotlin",
@@ -41,7 +41,7 @@
   },
   {
     "countForks": 7117,
-    "countStars": 26163,
+    "countStars": 26164,
     "id": 95189138,
     "nameAuthor": "alibaba",
     "nameRepository": "p3c",
@@ -81,7 +81,7 @@
   },
   {
     "countForks": 1756,
-    "countStars": 17008,
+    "countStars": 17009,
     "id": 58034548,
     "nameAuthor": "google",
     "nameRepository": "flexbox-layout",
@@ -113,7 +113,7 @@
   },
   {
     "countForks": 1619,
-    "countStars": 12877,
+    "countStars": 12878,
     "id": 43807251,
     "nameAuthor": "tachiyomiorg",
     "nameRepository": "tachiyomi",
@@ -128,7 +128,7 @@
     "photoUser": "https://avatars.githubusercontent.com/u/32689599?v\u003d4"
   },
   {
-    "countForks": 2115,
+    "countForks": 2116,
     "countStars": 11543,
     "id": 186733095,
     "nameAuthor": "2dust",
@@ -169,7 +169,7 @@
   },
   {
     "countForks": 1417,
-    "countStars": 9849,
+    "countStars": 9850,
     "id": 61722736,
     "nameAuthor": "Kotlin",
     "nameRepository": "kotlinx.coroutines",
@@ -201,7 +201,7 @@
   },
   {
     "countForks": 1248,
-    "countStars": 9171,
+    "countStars": 9172,
     "id": 221809776,
     "nameAuthor": "Kr328",
     "nameRepository": "ClashForAndroid",
@@ -232,8 +232,8 @@
     "photoUser": "https://avatars.githubusercontent.com/u/227486?v\u003d4"
   },
   {
-    "countForks": 562,
-    "countStars": 7718,
+    "countForks": 563,
+    "countStars": 7719,
     "id": 60159997,
     "nameAuthor": "YiiGuxing",
     "nameRepository": "TranslationPlugin",

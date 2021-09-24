@@ -12,4 +12,8 @@ interface RepositoryApi : Api {
         @Query("sort") sort: String,
         @Query("page") page: Int
     ): RepositoryDTO
+
+    override suspend fun saveRepository(repositoryDTO: RepositoryDTO) {
+        //Do Nothing
+    }
 }
