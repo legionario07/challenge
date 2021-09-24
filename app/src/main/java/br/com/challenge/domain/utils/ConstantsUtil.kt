@@ -7,6 +7,10 @@ import com.google.gson.reflect.TypeToken
 class ConstantsUtil {
 
     companion object {
+
+        const val BASE_URL = "https://api.github.com/"
+        const val BASE_URL_MOCK = "http://localhost/"
+
         const val BASE_PATH_JSONS = "jsons/"
         const val JSON_REPOSITORY_DTO = BASE_PATH_JSONS + "repositorydto.json"
         const val JSON_REPOSITORY_ENTITIES = BASE_PATH_JSONS + "repositories_entities.json"

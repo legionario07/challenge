@@ -5,17 +5,20 @@ import br.com.challenge.domain.repository.api.RepositoryApi
 import br.com.challenge.domain.utils.ConstantsUtil
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-open class RetrofitModule {
+@TestInstallIn(
+    components = [SingletonComponent::class],
+    replaces = [RetrofitModule::class]
+)
+class MockRetrofitModule {
 
     @Singleton
     @Provides
     fun providesRepoApi(): RepositoryApi {
-        return ApiManager.repositoryApi(ConstantsUtil.BASE_URL)
+        return ApiManager.repositoryApi(ConstantsUtil.BASE_URL_MOCK)
     }
 }

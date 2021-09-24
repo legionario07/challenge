@@ -5,25 +5,26 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiManager {
+class ApiManager {
 
-    private const val BASE_URL = "https://api.github.com/"
+    companion object {
+        @JvmStatic
+        fun repositoryApi(url: String): RepositoryApi {
 
-    val repositoryApi: RepositoryApi by lazy {
+            val logger = HttpLoggingInterceptor()
+            logger.level = HttpLoggingInterceptor.Level.BASIC
 
-        val logger = HttpLoggingInterceptor()
-        logger.level = HttpLoggingInterceptor.Level.BASIC
+            val client = OkHttpClient.Builder()
+                .addInterceptor(logger)
+                .build()
 
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logger)
-            .build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-
-        return@lazy retrofit.create(RepositoryApi::class.java)
+            return retrofit.create(RepositoryApi::class.java)
+        }
     }
 }
