@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class ListRepoRepositoryLocalImpl @Inject constructor(private val repositoryDao: RepositoryDao) :
+class ListRepoRepositoryLocalImpl @Inject constructor(private val repositoryDao: IDao) :
     IListRepoRepository {
 
     override suspend fun getRepositories(
